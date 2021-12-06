@@ -1,0 +1,21 @@
+.markdown {
+  font-size: 1em;
+  line-height: 1.7;
+  color: #444;
+  /* padding-top: 27px; */
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply;
+}
+
+.markdown h2 {
+  @apply h2;
+}
+
+.markdown h3 {
+  @apply h3;
+}
