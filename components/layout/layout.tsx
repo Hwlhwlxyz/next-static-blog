@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import styles from './layout.module.css'
 
 export default function Layout({ children }: any) {
@@ -10,13 +9,13 @@ export default function Layout({ children }: any) {
   }
   
   return (
-    <>
-      <Head>
+    <div>
+      <div>
         <title>Layouts Example</title>
-      </Head>
+      </div>
       <main className={styles.main}>
         {children}
         </main>
-    </>
+    </div>
   )
 }

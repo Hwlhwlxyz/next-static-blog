@@ -5,6 +5,7 @@ import PostPreview from "./post-preview";
 import PostType from "../lib/models/post";
 
 import blogConfig from "../blogConfig.json";
+import Head from "next/head";
 
 
 const MainPage = (props: any) => {
@@ -21,6 +22,7 @@ const MainPage = (props: any) => {
   }
   return (
     <div>
+      
       <h1>{blogConfig["title"]}</h1>
 
       <div>
