@@ -1,29 +1,33 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import styles from '../../styles/Home.module.css'
 import markdownToHtml from '../../lib/api/markdownToHtml'
 import PostBody from '../../components/post-body'
-import { getAllPosts, getPostBySlug } from '../../lib/api/posts'
+import { getAllPosts, getAllTags, getPostBySlug } from '../../lib/api/posts'
+import Layout from '../../components/layout/layout'
+import { LayoutSidebar } from '../../components/layout/sidebar'
 
 
 type Props = {
   post: any
   morePosts: any[]
-  preview?: boolean
+  preview?: boolean,
+  tags: string[]
 }
 
-const Post = ({ post, morePosts, preview }: Props) => {
-  console.log({ post, morePosts, preview })
+const Post = ({ post, morePosts, preview, tags }: Props) => {
+  // console.log({ post, morePosts, preview })
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+  console.log("[...slug] post: ",post)
   
   return (
-    <div className={styles.container}>
-      preview={preview}
-      <div>
+    <div >
+
+      <div className={styles.container}>
       
         {router.isFallback ? (
           <title>Loading…</title>
@@ -50,6 +54,18 @@ const Post = ({ post, morePosts, preview }: Props) => {
   )
 }
 
+Post.getLayout = function getLayout(page: ReactElement) {
+  console.log(page)
+  let tags = page.props.tags;
+  return (
+    <Layout>
+      <LayoutSidebar tags={tags} />
+      {page}
+    </Layout>
+  );
+};
+
+
 export default Post
 
 type Params = {
@@ -70,23 +86,20 @@ export async function getStaticProps({ params }: Params) {
     'title',
     'date',
     'slug',
-    'author',
     'content',
-    'ogImage',
-    'coverImage',
-    'path'
+    'tags'
   ])
   const content = await markdownToHtml(post.content || '')
   let morePosts: any[] = [];
-  let preview = 'this is preview';
   return {
     props: {
       post: {
         ...post,
-        content
+        content,
       },
       morePosts: morePosts, 
-      preview: preview
+      preview: false,
+      tags: getAllTags()
     },
   }
 }
@@ -106,3 +119,4 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
+

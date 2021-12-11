@@ -1,37 +1,47 @@
-import { NextPage } from "next"
-import React from "react"
+import { NextPage } from "next";
+import React from "react";
 import Intro from "./intro";
 import PostPreview from "./post-preview";
 import PostType from "../lib/models/post";
 
+import blogConfig from "../blogConfig.json";
 
 
 const MainPage = (props: any) => {
-  console.log(props)
+  console.log(props);
+
   let allPosts: PostType[] = props.allPosts;
   if (allPosts == undefined) {
     return (
       <div>
-        <Intro></Intro>
-          <h1>Main Page</h1>
-        <hr></hr>
+        <h1>{blogConfig["title"]}</h1>
         <p>no posts</p>
-        <hr></hr>
       </div>
-  )
+    );
   }
-    return (
-        <div>
-          <Intro></Intro>
-            <h1>Main Page</h1>
-          <hr></hr>
-          {allPosts.map((p: PostType)=>{
-            return <PostPreview key={p['title']} title={p.title} coverImage={""} date={p.date} excerpt={p.excerpt} slug={p.slug} />
-          })}
-          <hr></hr>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>{blogConfig["title"]}</h1>
 
-export default MainPage
+      <div>
+      {allPosts.map((p: PostType) => {
+          return (
+            <PostPreview key={p["slug"]}
+              title={p.title}
+              coverImage={""}
+              date={p.date}
+              excerpt={p.excerpt}
+              slug={p.slug}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
+export default MainPage;
+
+const showSettings = (event: any) => {
+  console.log(event);
+};

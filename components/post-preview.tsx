@@ -23,12 +23,6 @@ const PostPreview = ({
   return (
     <div>
       <h2>
-        {/* <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a className="hover:underline">{title}</a>
-        </Link> */}
-        <Link as={`/posts/${encodeURIComponent(slug)}`} href="/posts/[slug]">
-          <a className="hover:underline">{title} 1</a>
-        </Link>
         <Link as={`/posts/${(slug)}`} href="/posts/*">
           <a className="hover:underline">{title} 2</a>
         </Link>
