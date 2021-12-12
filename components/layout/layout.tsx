@@ -1,4 +1,5 @@
 import styles from './layout.module.css'
+import blogConfig from "../../blogConfig.json";
 
 export default function Layout({ children }: any) {
   console.log("layout:",children)
@@ -11,7 +12,7 @@ export default function Layout({ children }: any) {
   return (
     <div>
       <div>
-        <title>Layouts Example</title>
+        <title>{blogConfig.title}</title>
       </div>
       <main className={styles.main}>
         {children}

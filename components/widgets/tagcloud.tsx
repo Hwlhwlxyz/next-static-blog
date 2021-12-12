@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "../../styles/Home.module.css";
 
 type Props = {
   tags: string[];
@@ -11,10 +12,10 @@ export const Tagcloud = ({ tags }: Props) => {
     "float": "left",
   };
   return (
-    <div>
+    <div className={styles.tags}>
       {tags.map((tag: string) => {
         return (
-          <div key={tag} style={style}>
+          <div key={tag}  className={styles.tag}>
             <Link href={"/tags/" + tag}>
               <a>{tag}</a>
             </Link>

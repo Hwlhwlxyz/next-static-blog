@@ -12,6 +12,7 @@ import PostType from "../../lib/models/post";
 import Head from "next/head";
 import MainPage from "../../components/mainpage";
 import { Pagination } from "../../components/pagination";
+import BlogHead from "../../components/blogHead";
 
 
 type Props = {
@@ -44,6 +45,7 @@ const PostPage = ({ postsToDisplay, tags, pagenumber, totalnumber }: Props) => {
       </Head>
 
       <main className={styles.main}>
+        <BlogHead />
         <MainPage allPosts={postsToDisplay} />
       </main>
 

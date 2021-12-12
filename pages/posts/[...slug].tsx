@@ -7,6 +7,8 @@ import PostBody from '../../components/post-body'
 import { getAllPosts, getAllTags, getPostBySlug } from '../../lib/api/posts'
 import Layout from '../../components/layout/layout'
 import { LayoutSidebar } from '../../components/layout/sidebar'
+import { Tagcloud } from '../../components/widgets/tagcloud'
+import BlogHead from '../../components/blogHead'
 
 
 type Props = {
@@ -17,7 +19,7 @@ type Props = {
 }
 
 const Post = ({ post, morePosts, preview, tags }: Props) => {
-  // console.log({ post, morePosts, preview })
+  console.log({ post, morePosts, preview })
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -25,10 +27,10 @@ const Post = ({ post, morePosts, preview, tags }: Props) => {
   console.log("[...slug] post: ",post)
   
   return (
-    <div >
+    <div className={styles.container}>
 
-      <div className={styles.container}>
-      
+      <div className={styles.main}>
+      <BlogHead/>
         {router.isFallback ? (
           <title>Loading…</title>
         ) : (
@@ -49,7 +51,9 @@ const Post = ({ post, morePosts, preview, tags }: Props) => {
             
           </div>
         )}
+        <Tagcloud tags={post.tags} />
       </div>
+      
     </div>
   )
 }

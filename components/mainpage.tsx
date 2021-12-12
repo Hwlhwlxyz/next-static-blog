@@ -4,8 +4,6 @@ import Intro from "./intro";
 import PostPreview from "./post-preview";
 import PostType from "../lib/models/post";
 
-import blogConfig from "../blogConfig.json";
-import Head from "next/head";
 
 
 const MainPage = (props: any) => {
@@ -15,16 +13,12 @@ const MainPage = (props: any) => {
   if (allPosts == undefined) {
     return (
       <div>
-        <h1>{blogConfig["title"]}</h1>
         <p>no posts</p>
       </div>
     );
   }
   return (
     <div>
-      
-      <h1>{blogConfig["title"]}</h1>
-
       <div>
       {allPosts.map((p: PostType) => {
           return (
