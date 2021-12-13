@@ -1,3 +1,9 @@
+在_posts中添加markdown文件，有嵌套目录也会识别。
+`npm run export` 导出静态文件到out目录
+
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

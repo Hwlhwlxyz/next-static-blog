@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import React, { ReactElement, useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
-import markdownToHtml from "../../lib/api/markdownToHtml";
 import PostBody from "../../components/post-body";
 import { getAllPosts, getAllTags, getPostBySlug } from "../../lib/api/posts";
 import Layout from "../../components/layout/layout";
@@ -14,27 +13,20 @@ import MainPage from "../../components/mainpage";
 import { Pagination } from "../../components/pagination";
 import BlogHead from "../../components/blogHead";
 
-
 type Props = {
-    postsToDisplay: PostType[];
+  postsToDisplay: PostType[];
   tags: string[];
   pagenumber: number;
   totalnumber: number;
 };
 
 const PostPage = ({ postsToDisplay, tags, pagenumber, totalnumber }: Props) => {
-//   const postsToDisplay = getPostToDisplay(allPosts, pagenumber);
+  //   const postsToDisplay = getPostToDisplay(allPosts, pagenumber);
   const router = useRouter();
-  console.log(postsToDisplay);
-  console.log(postsToDisplay.length);
-  console.log("postsToDisplay", postsToDisplay);
-  console.log(totalnumber,blogConfig.postPerPage,totalnumber/blogConfig.postPerPage)
-  let totalPageNumber = Math.ceil(totalnumber/blogConfig.postPerPage);
+  let totalPageNumber = Math.ceil(totalnumber / blogConfig.postPerPage);
   if (!router.isFallback && !postsToDisplay) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage statusCode={404} />;
   }
-
-  
 
   return (
     <div className={styles.container}>
@@ -49,10 +41,16 @@ const PostPage = ({ postsToDisplay, tags, pagenumber, totalnumber }: Props) => {
         <MainPage allPosts={postsToDisplay} />
       </main>
 
-      <Pagination className={styles.pagination} selectedClassName={styles.selected} pageNumber={pagenumber} totalPageNumber={totalPageNumber} hrefPrefix={null} pageRangeDisplayed={undefined} />
+      <Pagination
+        className={styles.pagination}
+        selectedClassName={styles.selected}
+        pageNumber={pagenumber}
+        totalPageNumber={totalPageNumber}
+        hrefPrefix={null}
+        pageRangeDisplayed={undefined}
+      />
 
       <footer className={styles.footer}>
-
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -102,7 +100,7 @@ export async function getStaticProps({ params }: Params) {
   allPosts = getAllPosts(["title", "date", "slug", "coverImage", "excerpt"]);
   console.log(allPosts);
   const totalnumber = allPosts.length;
-    const postsToDisplay = getPostToDisplay(allPosts, pagenumber);
+  const postsToDisplay = getPostToDisplay(allPosts, pagenumber);
   const tags = getAllTags();
   return {
     props: { postsToDisplay, tags, pagenumber, totalnumber },
