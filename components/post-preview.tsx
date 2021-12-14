@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import postStyles from '../styles/post.module.css'
 import dateFormat from '../lib/util/util'
+import blogConfig from '../blogConfig.json';
 
 type Props = {
   title: string
@@ -19,12 +20,11 @@ const PostPreview = ({
   excerpt,
   slug,
 }: Props) => {
-  
   return (
     <div>
       <h2>
-        <Link as={`/posts/${(slug)}`} href="/posts/*">
-          <a className="hover:underline">{title} 2</a>
+        <Link as={blogConfig['addHtml']? `/posts/${slug}.html`:`/posts/${slug}`} href="/posts/*">
+          <a className="hover:underline">{title}</a>
         </Link>
       </h2>
       <div className={postStyles.dateStyle}>{dateFormat(new Date(date))}</div>

@@ -78,7 +78,7 @@ PostPage.getLayout = function getLayout(page: ReactElement) {
 };
 
 function getPostToDisplay(allPosts: PostType[], pageNumber: number) {
-  const postsToDisplay = allPosts.splice(
+  const postsToDisplay = allPosts.slice(
     (pageNumber - 1) * blogConfig.postPerPage,
     Math.min(pageNumber * blogConfig.postPerPage, allPosts.length)
   );

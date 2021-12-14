@@ -1,0 +1,7 @@
+{
+    "presets": ["next/babel"],
+    "plugins": [
+      "superjson-next", // Next.js cannot parse Date type
+    //   "babel-plugin-superjson-next"
+    ]
+  }

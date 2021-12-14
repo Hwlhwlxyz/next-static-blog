@@ -93,6 +93,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'tags'
   ])
+  console.log("96:", post)
   const content = await markdownToHtml(post.content || '')
   let morePosts: any[] = [];
   return {

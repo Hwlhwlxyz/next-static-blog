@@ -4,5 +4,7 @@
         "title": "intro title",
         "content": "intro content"
     },
-    "postPerPage": 3
+    "postPerPage": 3,
+    "ignoreMissing": true,
+    "addHtml": false
 }

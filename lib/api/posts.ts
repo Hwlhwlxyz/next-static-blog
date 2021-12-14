@@ -36,7 +36,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fullPath = join(postsDirectory, `${realSlug}.md`)
   // const fullPath = join(postsDirectory, slug)
   console.log(fullPath)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const fileContents = fs.readFileSync(fullPath, 'utf8').trimStart(); // gray-matter not parse data if the string begins with blank lines
   const { data, content } = matter(fileContents)
 
   type Items = {
@@ -62,11 +62,15 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       items[field] = path
     }
 
+    if (field === 'date') {
+      items[field] = new Date(items[field]);
+    }
+
     if (typeof data[field] !== 'undefined') {
       items[field] = data[field]
     }
   })
-  // console.log("41", items)
+  // console.log("74", items)
   return items
 }
 
@@ -76,7 +80,7 @@ export function getAllPosts(fields: string[] = []) {
   const posts = slugs
     .map((slug: any) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((post1: any, post2: any) => (post1.date > post2.date ? -1 : 1))
+    .sort((post1: any, post2: any) => ((post1.date) > (post2.date) ? -1 : 1))
     console.log("51:", posts)
     // Promise.resolve(posts)
     return posts

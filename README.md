@@ -1,6 +1,12 @@
-在_posts中添加markdown文件，有嵌套目录也会识别。
-`npm run export` 导出静态文件到out目录
+使用Next.js编写的博客
 
+在_posts中添加markdown文件，有嵌套目录也会识别。
+`npm run export` 或者 `yarn export` 导出静态文件到out目录。
+
+markdown文件中插入代码要用lowlight已经注册过的语言，不然会报错。Error: Unknown language: `xxx` is not registered。可以通过设置ignoreMissing忽略这个错误。
+
+遇到特殊情况（比如文件名字有空格，路径中带有"."的话在开发环境运行正常，但是导出成静态文件后返回404），build之后虽然html文件存在，但是通过路由过去会返回404，在路径后面加上.html可以访问。可以在blogConfig.json中设置addHtml为true。
+> https://stackoverflow.com/a/58098322
 
 ---
 

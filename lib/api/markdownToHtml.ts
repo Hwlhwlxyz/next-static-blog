@@ -6,6 +6,7 @@ import remarkParse from 'remark-parse'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeDocument from 'rehype-document'
 import rehypeStringify from 'rehype-stringify'
+import blogConfig from "../../blogConfig.json";
 
 export default async function markdownToHtml(markdown: string) {
   // const result = await remark()
@@ -14,14 +15,17 @@ export default async function markdownToHtml(markdown: string) {
   // })
   // .use(html)
   // .process(markdown)
-
+  let ignoreMissing;
+  if (blogConfig["ignoreMissing"]==true) {
+    ignoreMissing = true;
+  }
+  else {
+    ignoreMissing = false;
+  }
   const result = await unified()
   .use(remarkParse)
   .use(remarkRehype)
-  // .use(rehypeDocument)
-  // .use(html)
-
-  .use(rehypeHighlight)
+  .use(rehypeHighlight, {ignoreMissing: ignoreMissing})
   .use(rehypeStringify)
   .process(markdown)
   return result.toString()
