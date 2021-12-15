@@ -6,6 +6,8 @@ import remarkParse from 'remark-parse'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeDocument from 'rehype-document'
 import rehypeStringify from 'rehype-stringify'
+import rehypePresetMinify from 'rehype-preset-minify'
+
 import blogConfig from "../../blogConfig.json";
 
 export default async function markdownToHtml(markdown: string) {
@@ -24,8 +26,9 @@ export default async function markdownToHtml(markdown: string) {
   }
   const result = await unified()
   .use(remarkParse)
-  .use(remarkRehype)
+  .use(remarkRehype, {allowDangerousHtml: true})
   .use(rehypeHighlight, {ignoreMissing: ignoreMissing})
+  .use(rehypePresetMinify)
   .use(rehypeStringify)
   .process(markdown)
   return result.toString()

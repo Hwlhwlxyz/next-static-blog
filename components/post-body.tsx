@@ -1,5 +1,5 @@
 import markdownStyles from '../styles/markdown-styles.module.css'
-
+import markdownCodeStyles from '../styles/markdown-code-styles.module.css'
 
 type Props = {
   content: string
@@ -17,7 +17,7 @@ const PostBody = ({ content }: Props) => {
     <div>
        <CodeBlockStyle />
       <div
-        className={markdownStyles['markdown']}
+        className={[markdownStyles['markdown'], markdownCodeStyles['markdown']].join(' ')}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>

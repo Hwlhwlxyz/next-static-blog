@@ -1,0 +1,7 @@
+/* code block scrollbar */
+
+.markdown code {
+  max-height: 200px !important;
+  overflow-y: auto !important;
+  max-width: 800px !important;
+}

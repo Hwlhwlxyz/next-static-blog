@@ -37,7 +37,3 @@ const MainPage = (props: any) => {
 };
 
 export default MainPage;
-
-const showSettings = (event: any) => {
-  console.log(event);
-};
