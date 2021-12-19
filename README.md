@@ -13,9 +13,9 @@ markdown文件中插入代码要用lowlight已经注册过的语言，不然会�
 
 拷贝文件到目录下，同时也把图片拷贝过去
 ```
-rsync -av  --include="*.jpg" --include="*.png" --include="/*" --exclude="*"  _posts/ /var/www/html/out/posts/
-
 rsync -av  out/ /var/www/html/
+
+rsync -av  --include="*.jpg" --include="*.png" --include="/*" --exclude="*"  _posts/ /var/www/html/out/posts/
 
 ```
 ---

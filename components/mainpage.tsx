@@ -18,8 +18,7 @@ const MainPage = (props: any) => {
     );
   }
   return (
-    <div>
-      <div>
+      <div style={{"width": "100%"}}>
       {allPosts.map((p: PostType) => {
           return (
             <PostPreview key={p["slug"]}
@@ -32,7 +31,6 @@ const MainPage = (props: any) => {
           );
         })}
       </div>
-    </div>
   );
 };
 
