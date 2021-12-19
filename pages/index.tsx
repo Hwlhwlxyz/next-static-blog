@@ -58,10 +58,13 @@ Index.getLayout = function getLayout(page: ReactElement) {
   console.log(page);
   let tags = page.props.tags;
   return (
-    <Layout>
+
+<Layout>
       <LayoutSidebar tags={tags} />
       {page}
     </Layout>
+
+    
   );
 };
 

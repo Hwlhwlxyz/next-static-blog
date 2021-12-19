@@ -1,13 +1,21 @@
-.nav {
-    /* height: 100%; */
+@media (max-width: 768px){
+  .nav {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    /* background-color: #fafafa; */
     padding: 32px;
     border-right: 1px solid #eaeaea;
   }
-  
+}
+
+@media (min-width: 768px){
+  .nav {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 32px;
+    border-right: 1px solid #eaeaea;
+  }
+}
   .nav > a {
     margin: 8px 0;
     text-decoration: none;
@@ -38,3 +46,4 @@
     height: 28px;
   }
   
+

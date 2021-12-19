@@ -30,7 +30,6 @@ const Post = ({ post, morePosts, preview, tags }: Props) => {
       <BlogHead />
       <div className={styles.container}>
         <div>
-          
           {router.isFallback ? (
             <title>Loading…</title>
           ) : (

@@ -1,10 +1,23 @@
-.main {
-    display: flex;
-    height: calc(100vh - 64px);
+@media (min-width: 768px){
+  .main {
+    display: flex ;
+    /* flex-direction: column-reverse; */
     background-color: white;
   }
   
   .main > section {
     padding: 32px;
   }
+}
+
+@media (max-width: 768px){
+  .main {
+    display: flex ;
+    flex-direction: column-reverse;
+    background-color: white;
+  }
   
+  .main > section {
+    padding: 32px;
+  }
+}

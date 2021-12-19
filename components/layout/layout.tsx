@@ -14,7 +14,7 @@ export default function Layout({ children }: any) {
       <div>
         <title>{blogConfig.title}</title>
       </div>
-      <main className={styles.main}>
+      <main className={styles.main} >
         {children}
         </main>
     </div>

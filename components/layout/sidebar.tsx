@@ -7,7 +7,7 @@ import { Searchbar } from "./subcomponents/layoutsearchbar";
 export const LayoutSidebar = (props: any) => {
   const tags = props.tags;
     return (
-      <nav className={styles.nav}>
+      <nav id="sidebar-left" className={styles.nav}>
         <Searchbar />
 
         <Link href="/">

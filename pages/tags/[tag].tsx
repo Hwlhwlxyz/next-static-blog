@@ -29,7 +29,7 @@ const Tags = ({ allPostsByTag, currentTag, tags }: Props) => {
 };
 
 Tags.getLayout = function getLayout(page: ReactElement) {
-  console.log(page)
+  console.log(page);
   let tags = page.props.tags;
   return (
     <Layout>

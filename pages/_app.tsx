@@ -1,13 +1,19 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import React from 'react'
-import Layout from '../components/layout/layout'
-import { LayoutSidebar } from '../components/layout/sidebar'
-import { getAllTags } from '../lib/api/posts'
+import React, { ReactElement, ReactNode } from 'react'
+import { NextPage } from 'next'
 
-function MyApp({ Component, pageProps }: AppProps| any) {
-  const getLayout = Component.getLayout || ((page: any) => page)
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
 
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page)
+  
   return getLayout(<Component {...pageProps} />)
   // return <Component {...pageProps} />
 }
