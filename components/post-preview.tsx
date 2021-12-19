@@ -20,11 +20,12 @@ const PostPreview = ({
   excerpt,
   slug,
 }: Props) => {
+  let slugList = slug.split('/');
   return (
     <div>
       <h2>
-        <Link as={blogConfig['addHtml']? `/posts/${slug}.html`:`/posts/${slug}`} href="/posts/*">
-          <a className="hover:underline">{title}</a>
+        <Link as={blogConfig['addHtml']? `/posts/${slug}.html`:`/posts/${slug}`} href={`/posts/${slug}`}>
+          <a>{title}</a>
         </Link>
       </h2>
       <div className={postStyles.dateStyle}>{dateFormat(new Date(date))}</div>

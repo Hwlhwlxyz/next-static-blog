@@ -8,6 +8,7 @@ markdown文件中插入代码要用lowlight已经注册过的语言，不然会�
 遇到特殊情况（比如文件名字有空格，路径中带有"."的话在开发环境运行正常，但是导出成静态文件后返回404），build之后虽然html文件存在，但是通过路由过去会返回404，在路径后面加上.html可以访问。可以在blogConfig.json中设置addHtml为true。
 > https://stackoverflow.com/a/58098322
 
+
 如果内存不够，可以设置内存使用限制`NODE_OPTIONS=--max-old-space-size=512`
 
 
@@ -15,7 +16,7 @@ markdown文件中插入代码要用lowlight已经注册过的语言，不然会�
 ```
 rsync -av  out/ /var/www/html/
 
-rsync -av  --include="*.jpg" --include="*.png" --include="/*" --exclude="*"  _posts/ /var/www/html/out/posts/
+rsync -av  --include="*.jpg" --include="*.png" --include="/*" --exclude="*"  _posts/ /var/www/html/posts/
 
 ```
 ---
