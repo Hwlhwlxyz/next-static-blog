@@ -27,15 +27,17 @@ export const Pagination = ({
   pageRangeDisplayed,
 }: Props) => {
   const paginationClassName = className;
-  console.log(pageNumber, totalPageNumber);
 
   let numArr = [];
   for (let i = 0; i < totalPageNumber; i++) {
     numArr.push(i + 1);
   }
+  const nextPageNumber = Math.min(totalPageNumber, pageNumber+1);
+  const prevPageNumber = Math.max(1, pageNumber-1);
+
   return (
     <div className={paginationClassName}>
-      {pageLabel(null, "prev", "", getHref("/page", 1))}
+      {pageLabel(null, "prev", "", getHref("/page", prevPageNumber))}
       {numArr.map((n) => {
         if (pageNumber == n) {
           return pageLabel(null, n.toString(), selectedClassName, getHref("/page", n));
@@ -43,7 +45,7 @@ export const Pagination = ({
           return pageLabel(null, n.toString(), "", getHref("/page", n));
         }
       })}
-      {pageLabel(null, "next", "", getHref("/page", totalPageNumber))}
+      {pageLabel(null, "next", "", getHref("/page", nextPageNumber))}
     </div>
   );
 };

@@ -27,6 +27,7 @@ const PostPage = ({ postsToDisplay, tags, pagenumber, totalnumber }: Props) => {
   if (!router.isFallback && !postsToDisplay) {
     return <ErrorPage statusCode={404} />;
   }
+  console.log("pagenumber",pagenumber, typeof pagenumber)
 
   return (
     <div className={styles.container}>
@@ -89,13 +90,13 @@ export default PostPage;
 
 type Params = {
   params: {
-    pagenumber: number;
+    pagenumber: string;
   };
 };
 
 export async function getStaticProps({ params }: Params) {
   const pageNumber = params.pagenumber;
-  const pagenumber = pageNumber;
+  const pagenumber = parseInt(pageNumber);
   let allPosts: any = null;
   allPosts = getAllPosts(["title", "date", "slug", "coverImage", "excerpt"]);
   console.log(allPosts);
